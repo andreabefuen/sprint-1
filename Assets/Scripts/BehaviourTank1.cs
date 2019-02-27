@@ -125,4 +125,9 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
     {
         navTank.isStopped = true;
     }
+
+    public void Shoot()
+    {
+        throw new System.NotImplementedException();
+    }
 }

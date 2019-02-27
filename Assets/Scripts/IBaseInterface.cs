@@ -12,7 +12,7 @@ public interface IBaseInterface
 
     //Methods to the behaviour
     void MoveTo(GameObject target); //Move towards a GameObject
-    void Shot();
+    void Shoot();
     void RandomMove(); //Move into the scene randomly
     GameObject GetNearestTank();
     bool IsSomethingVisible();
