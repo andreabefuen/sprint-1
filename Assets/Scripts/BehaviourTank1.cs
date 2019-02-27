@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class BehaviourTank1 : MonoBehaviour, IBaseInterface 
 {
@@ -9,6 +10,10 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
     //Variables
     public int health;
     public float rangeOfVision;
+    public Transform fireTransform;
+    public float launchForce;
+    public Slider aimSlider;
+    public Rigidbody shell;
 
     public GameObject nearestTank;
 
@@ -16,12 +21,20 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
     private MenuControl menuControl;
     private NavMeshAgent navTank;
 
+    bool isInFront;
+    float timeBetweenFires = 0.5f;
+    float timeAfterFire;
+    int shootableMask;
+
 
     // Start is called before the first frame update
     void Start()
     {
         menuControl = GameObject.Find("GameController").GetComponent<MenuControl>();
         navTank = this.gameObject.GetComponent<NavMeshAgent>();
+
+        shootableMask = LayerMask.GetMask("Shootable");
+        //timeAfterFire = 0f;
         
     }
 
@@ -29,6 +42,16 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
     void Update()
     {
         nearestTank = GetNearestTank();
+
+        aimSlider.value = 30f;
+        timeAfterFire += Time.deltaTime;
+
+        if(timeAfterFire >= timeBetweenFires)
+        {
+            Shoot();
+        }
+       // Shoot();
+
     }
 
 
@@ -116,10 +139,6 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
         health = h;
     }
 
-    public void Shot()
-    {
-        throw new System.NotImplementedException();
-    }
 
     public void StopMove()
     {
@@ -128,6 +147,37 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
 
     public void Shoot()
     {
-        throw new System.NotImplementedException();
+
+       //Ray shootRay;
+       //shootRay.origin = fireTransform.position;
+       //shootRay.direction = fireTransform.forward;
+        RaycastHit hit;
+        
+        if (Physics.Raycast(fireTransform.position, fireTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, shootableMask))
+        {
+            Debug.DrawRay(fireTransform.position, fireTransform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.Log("SHOOOT");
+            isInFront = true;
+
+
+
+            Rigidbody shellInstance = Instantiate(shell, fireTransform.position, Quaternion.identity) as Rigidbody;
+
+            shellInstance.velocity = launchForce * fireTransform.forward;
+            //audio
+            timeAfterFire = 0f;
+
+
+        }
+        else
+        {
+            isInFront = false;
+            Debug.DrawRay(fireTransform.position, fireTransform.TransformDirection(Vector3.forward) * 1000, Color.yellow);
+            //Debug.Log("NOT SHOOTING");
+        }
+        
+        
+
+
     }
 }
