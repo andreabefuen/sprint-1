@@ -9,6 +9,7 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
 
     //Variables
     public int health;
+    public float speed;
     public float rangeOfVision;
     public Transform fireTransform;
     public float launchForce;
@@ -25,6 +26,9 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
     float timeBetweenFires = 0.5f;
     float timeAfterFire;
     int shootableMask;
+
+    bool isDead;
+
 
 
     // Start is called before the first frame update
@@ -59,9 +63,9 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
 
     //Methods
 
-    public float GetDistanceTo(GameObject target)
+    public float GetDistanceTo(Transform target)
     {
-        return Vector3.Distance(this.transform.position, target.transform.position);
+        return Vector3.Distance(this.transform.position, target.position);
     }
 
     public int GetHealth()
@@ -120,17 +124,21 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
 
     public bool IsSomethingVisible()
     {
+
+        //TO DO
         throw new System.NotImplementedException();
     }
 
-    public void MoveTo(GameObject target)
+    public void MoveTo(Transform target)
     {
         navTank.isStopped = false;
-        navTank.destination = target.transform.position;
+        navTank.destination = target.position;
     }
 
     public void RandomMove()
     {
+
+        //TO DO
         throw new System.NotImplementedException();
     }
 
@@ -179,5 +187,29 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
         
 
 
+    }
+
+    public float GetSpeed()
+    {
+
+        return speed;
+        
+        
+    }
+
+
+    public void Death()
+    {
+       if(health <= 0)
+        {
+            isDead = true;
+
+            //TO DO BEHAVIOUR, destroy or something
+        }
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
     }
 }
