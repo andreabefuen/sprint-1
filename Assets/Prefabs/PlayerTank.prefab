@@ -5938,11 +5938,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  speed: 0
   rangeOfVision: 0
   fireTransform: {fileID: 6209821757922034691}
   launchForce: 30
   aimSlider: {fileID: 5168723685225893178}
   shell: {fileID: 5409530, guid: 008ecb1b70bec724fa2cd34255b0d8f8, type: 3}
+  tankTurret: {fileID: 8598181768750192944}
   nearestTank: {fileID: 0}
 --- !u!1 &8701143349523342425
 GameObject:

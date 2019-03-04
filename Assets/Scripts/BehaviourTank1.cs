@@ -15,6 +15,7 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
     public float launchForce;
     public Slider aimSlider;
     public Rigidbody shell;
+    public Transform tankTurret;
 
     public GameObject nearestTank;
 
@@ -46,6 +47,14 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
     void Update()
     {
         nearestTank = GetNearestTank();
+        if (nearestTank != null)
+        {
+           //Quaternion newRotation = Quaternion.LookRotation(nearestTank.transform.position);
+           //tankTurret.transform.rotation = Quaternion.Slerp(tankTurret.rotation, newRotation, Time.deltaTime * 3);
+            tankTurret.LookAt(nearestTank.transform);
+        }
+
+
 
         aimSlider.value = 30f;
         timeAfterFire += Time.deltaTime;
@@ -107,6 +116,11 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
         if(nearestTank != null) {
             //nearestTank.GetComponent<Renderer>().material.color = Color.black;
             nearestTank.GetComponentInChildren<Renderer>().material.color = Color.black;
+
+          
+            
+            
+
             return nearestTank;
 
         }
@@ -160,11 +174,13 @@ public class BehaviourTank1 : MonoBehaviour, IBaseInterface
        //shootRay.origin = fireTransform.position;
        //shootRay.direction = fireTransform.forward;
         RaycastHit hit;
-        
+
+
+
         if (Physics.Raycast(fireTransform.position, fireTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, shootableMask))
         {
             Debug.DrawRay(fireTransform.position, fireTransform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("SHOOOT");
+            //Debug.Log("SHOOOT");
             isInFront = true;
 
 

@@ -9,7 +9,7 @@ public class MenuControl : MonoBehaviour
 
     public void CreateNewTank()
     {
-       GameObject newTank =  GameObject.Instantiate(tankPrefab, new Vector3(tankPrefab.transform.position.x, 0, tankPrefab.transform.position.z), Quaternion.identity);
+       GameObject newTank =  GameObject.Instantiate(tankPrefab, new Vector3(Random.Range(-40,40), 0, Random.Range(-40, 40)), Quaternion.identity);
        allTanks.Add(newTank);
     }
 
@@ -21,7 +21,7 @@ public class MenuControl : MonoBehaviour
         }
         foreach(GameObject tank in allTanks)
         {
-            tank.GetComponent<BehaviourTank1>().MoveTo(tank.GetComponent<BehaviourTank1>().GetNearestTank());
+            tank.GetComponent<BehaviourTank1>().MoveTo(tank.GetComponent<BehaviourTank1>().GetNearestTank().transform);
            
           
         }
