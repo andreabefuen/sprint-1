@@ -5596,7 +5596,7 @@ GameObject:
   - component: {fileID: 374857980}
   - component: {fileID: 6815966768341576396}
   - component: {fileID: 1925788202885641687}
-  - component: {fileID: 1780673953}
+  - component: {fileID: 7482401185587605002}
   m_Layer: 10
   m_Name: Sprint 2 Tank
   m_TagString: tank
@@ -5967,7 +5967,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1780673953
+--- !u!114 &7482401185587605002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5976,11 +5976,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 7666151352285563297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac080d321ffe47c45b1758f9496490e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 1062aaf2b52efbb4e8773986a808b78c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankTurret: {fileID: 8598181768750192944}
+  totalHealth: 100
+  speed: 0
+  rangeOfVision: 0
   fireTransform: {fileID: 6209821757922034691}
+  launchForce: 30
+  aimSlider: {fileID: 5168723685225893178}
+  healthSlider: {fileID: 6959013646603545041}
+  fillImageHealth: {fileID: 6875374111757473381}
+  zeroHealthColor: {r: 1, g: 0, b: 0, a: 0}
+  fullHeathColor: {r: 0.21888566, g: 1, b: 0, a: 0}
+  shell: {fileID: 5409530, guid: 008ecb1b70bec724fa2cd34255b0d8f8, type: 3}
+  tankTurret: {fileID: 8598181768750192944}
+  distanceShoot: 10
   tankToSee: {fileID: 0}
 --- !u!1 &8701143349523342425
 GameObject:

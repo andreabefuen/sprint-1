@@ -11,8 +11,10 @@ public class PatrolAction : StateMachineBehaviour
     GameObject[] waypointList;
 
     NavMeshAgent navMeshAgent;
+    TankStats tankStats;
 
     int count = 0;
+    int shootableMask;
     
 
 
@@ -29,6 +31,10 @@ public class PatrolAction : StateMachineBehaviour
 
         tank = animator.gameObject;
         navMeshAgent = tank.GetComponent<NavMeshAgent>();
+        tankStats = tank.GetComponent<TankStats>();
+
+        shootableMask = LayerMask.GetMask("Shootable");
+        anim = animator;
 
 
     }
@@ -43,6 +49,7 @@ public class PatrolAction : StateMachineBehaviour
             count = (count + 1) % waypointList.Length;
             
         }
+        Look();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -62,4 +69,20 @@ public class PatrolAction : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+
+
+    void Look()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(tankStats.fireTransform.position, tankStats.fireTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, shootableMask))
+        {
+            Debug.DrawRay(tankStats.fireTransform.position, tankStats.fireTransform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            tankStats.tankTurret.LookAt(hit.transform);
+            tankStats.tankToSee = hit.transform.gameObject;
+            anim.SetBool("chase", true);
+            Debug.Log("Ha visto algo");
+        }
+
+    }
 }
