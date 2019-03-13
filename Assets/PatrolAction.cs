@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -49,7 +50,22 @@ public class PatrolAction : StateMachineBehaviour
             count = (count + 1) % waypointList.Length;
             
         }
-        Look();
+        SeeSomething();
+        //Look();
+    }
+
+    private void SeeSomething()
+    {
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(tankStats.fireTransform.position, tankStats.fireTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, shootableMask))
+        {
+            Debug.DrawRay(tankStats.fireTransform.position, tankStats.fireTransform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            tankStats.tankToSee = hit.transform.gameObject;
+            anim.SetBool("chase", true);
+            Debug.Log("Ha visto algo");
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

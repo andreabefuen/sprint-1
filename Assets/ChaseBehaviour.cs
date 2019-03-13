@@ -27,12 +27,22 @@ public class ChaseBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        navMeshAgent.destination = chaseTank.transform.position;
-        
-        if(Vector3.Distance(chaseTank.transform.position, tank.transform.position) < tankStats.distanceShoot)
+        if(chaseTank != null)
         {
-            animator.SetBool("attack", true);
+            tankStats.tankTurret.LookAt(chaseTank.transform.position);
+            navMeshAgent.destination = chaseTank.transform.position;
+
+            if (Vector3.Distance(chaseTank.transform.position, tank.transform.position) < tankStats.distanceShoot)
+            {
+                animator.SetBool("attack", true);
+            }
         }
+        else
+        {
+            animator.SetBool("attack", false);
+            animator.SetBool("chase", false);
+        }
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

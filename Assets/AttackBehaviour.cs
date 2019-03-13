@@ -39,6 +39,12 @@ public class AttackBehaviour : StateMachineBehaviour
         {
             Shoot(animator);
         }
+
+        if(tankStats.tankToSee == null)
+        {
+            animator.SetBool("attack", false);
+            animator.SetBool("chase", false);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -58,7 +64,8 @@ public class AttackBehaviour : StateMachineBehaviour
             Debug.DrawRay(tankStats.fireTransform.position, tankStats.fireTransform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("SHOOOT");
             Rigidbody shellInstance = Instantiate(tankStats.shell, tankStats.fireTransform.position, Quaternion.identity) as Rigidbody;
-
+            tankStats.tankTurret.LookAt(hit.transform);
+            tankStats.tankToSee = hit.transform.gameObject;
             shellInstance.velocity = tankStats.launchForce * tankStats.fireTransform.forward;
             //audio
             timeAfterFire = 0f;
