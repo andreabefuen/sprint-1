@@ -5597,6 +5597,7 @@ GameObject:
   - component: {fileID: 6815966768341576396}
   - component: {fileID: 1925788202885641687}
   - component: {fileID: 7482401185587605002}
+  - component: {fileID: 1255642208}
   m_Layer: 10
   m_Name: Sprint 2 Tank
   m_TagString: tank
@@ -5872,7 +5873,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7666151352285563297}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 030896d0325fa3e4d8d7d4cfe2351cb2, type: 3}
   m_Name: 
@@ -5919,7 +5920,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_StoppingDistance: 15
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -5980,8 +5981,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 100
-  speed: 5
-  rangeOfVision: 0
+  speed: 10
+  rangeOfVision: 20
+  strength: 2.5
   fireTransform: {fileID: 6209821757922034691}
   launchForce: 30
   aimSlider: {fileID: 5168723685225893178}
@@ -5992,8 +5994,22 @@ MonoBehaviour:
   shell: {fileID: 8382186608112310507, guid: be2f4545a0791f14d868bb86b0156978, type: 3}
   tankTurret: {fileID: 8598181768750192944}
   explosionPrefab: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
-  distanceShoot: 10
+  timeBetweenFire: 1
+  distanceShoot: 25
   tankToSee: {fileID: 0}
+--- !u!135 &1255642208
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666151352285563297}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 7
+  m_Center: {x: 0, y: 0, z: 6.65}
 --- !u!1 &8701143349523342425
 GameObject:
   m_ObjectHideFlags: 0

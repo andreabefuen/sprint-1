@@ -946,25 +946,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0537f4239aedf40bc02c2b11245a5c, type: 3}
---- !u!1 &1255642195 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7666151352285563297, guid: 9ae19196b589fb347b9e1098542a58cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1330365019}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &1255642208
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255642195}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3.99
-  m_Center: {x: 0, y: 0, z: 3.08}
 --- !u!1001 &1330365019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1046,16 +1027,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7482401185587605002, guid: 9ae19196b589fb347b9e1098542a58cd,
-        type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7482401185587605002, guid: 9ae19196b589fb347b9e1098542a58cd,
-        type: 3}
-      propertyPath: rangeOfVision
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ae19196b589fb347b9e1098542a58cd, type: 3}

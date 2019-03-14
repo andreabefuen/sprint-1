@@ -13,8 +13,8 @@ public class AttackBehaviour : StateMachineBehaviour
 
     int shootableMask;
 
-    float timeBetweenFires = 0.5f;
-    float timeAfterFire = 10f;
+    float timeBetweenFires;
+    float timeAfterFire;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -27,6 +27,8 @@ public class AttackBehaviour : StateMachineBehaviour
 
 
         shootableMask = LayerMask.GetMask("Shootable");
+
+        timeBetweenFires = tankStats.timeBetweenFire;
 
     }
 
@@ -69,6 +71,7 @@ public class AttackBehaviour : StateMachineBehaviour
             shellInstance.velocity = tankStats.launchForce * tankStats.fireTransform.forward;
             //audio
             timeAfterFire = 0f;
+            //tankStats.StopMovement();
 
 
         }
@@ -77,6 +80,7 @@ public class AttackBehaviour : StateMachineBehaviour
 
             //Debug.DrawRay(fireTransform.position, fireTransform.TransformDirection(Vector3.forward) * 1000, Color.yellow);
             //Debug.Log("NOT SHOOTING");
+           // tankStats.ContinueMovement();
             animator.SetBool("attack", false);
         }
     }

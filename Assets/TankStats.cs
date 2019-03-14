@@ -10,17 +10,20 @@ public class TankStats : MonoBehaviour
     public float totalHealth;
     public float speed;
     public float rangeOfVision;
+    public float strength;
     public Transform fireTransform;
     public float launchForce;
     public Slider aimSlider;
     public Slider healthSlider;
     public Image fillImageHealth;
-    public Color zeroHealthColor;
-    public Color fullHeathColor;
+    public Color zeroHealthColor = Color.red;
+    public Color fullHeathColor = Color.green;
     public Rigidbody shell;
     public Transform tankTurret;
     public GameObject explosionPrefab;
     private ParticleSystem explosionParticles;
+
+    public float timeBetweenFire = 1f;
 
     public float distanceShoot;
 
@@ -30,17 +33,19 @@ public class TankStats : MonoBehaviour
 
     private float currentHealth;
     private bool isDead = false;
+    Animator anim;
 
     private void Awake()
     {
 
-        
         currentHealth = totalHealth;
 
         navMeshAgent = this.GetComponent<NavMeshAgent>();
 
         navMeshAgent.speed = speed;
-        
+
+        anim = this.GetComponent<Animator>();
+
 
 
 
@@ -55,10 +60,23 @@ public class TankStats : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        // When the tank is enabled, reset the tank's health and whether or not it's dead.
+        currentHealth = totalHealth;
+        isDead = false;
+
+        // Update the health slider's value and color.
+        SetHealthUI();
+    }
+
     public void TakeDamage(float amount)
     {
         // Reduce current health by the amount of damage done.
         currentHealth -= amount;
+        Debug.Log(currentHealth);
+
+
 
         // Change the UI elements appropriately.
         SetHealthUI();
@@ -70,10 +88,20 @@ public class TankStats : MonoBehaviour
         }
     }
 
+    public void StopMovement()
+    {
+        navMeshAgent.isStopped = true;
+    }
+
+    public void ContinueMovement()
+    {
+        navMeshAgent.isStopped = false;
+    }
+
     private void SetHealthUI()
     {
         // Set the slider's value appropriately.
-        healthSlider.value = totalHealth;
+        healthSlider.value = currentHealth;
 
         // Interpolate the color of the bar between the choosen colours based on the current percentage of the starting health.
         fillImageHealth.color = Color.Lerp(zeroHealthColor, fullHeathColor, currentHealth / totalHealth);
@@ -106,6 +134,9 @@ public class TankStats : MonoBehaviour
         {
             Debug.Log("otro tanque");
             tankToSee = other.gameObject;
+            anim.SetBool("chase", true);
+
+
         }
     }
 

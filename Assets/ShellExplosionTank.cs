@@ -46,10 +46,12 @@ public class ShellExplosionTank : MonoBehaviour
                 continue;
 
             // Calculate the amount of damage the target should take based on it's distance from the shell.
-            float damage = CalculateDamage(targetRigidbody.position);
+            //float damage = CalculateDamage(targetRigidbody.position);
 
             // Deal this damage to the tank.
-            tankStats.TakeDamage(damage);
+            tankStats.TakeDamage(2.5f);
+
+            
         }
 
         // Unparent the particles from the shell.
