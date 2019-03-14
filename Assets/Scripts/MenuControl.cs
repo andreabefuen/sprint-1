@@ -7,11 +7,14 @@ public class MenuControl : MonoBehaviour
     public GameObject tankPrefab;
     public List<GameObject> allTanks;
 
+    public TanksSetup[] tanks;
+
     public void CreateNewTank()
     {
        GameObject newTank =  GameObject.Instantiate(tankPrefab, new Vector3(Random.Range(-40,40), 0, Random.Range(-40, 40)), Quaternion.identity);
        allTanks.Add(newTank);
     }
+
 
     public void MoveToNearest()
     {
