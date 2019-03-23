@@ -9,6 +9,9 @@ public class TankAI : MonoBehaviour
     public GameObject bullet;
     public GameObject turret;
 
+    public float totalHealth;
+    public float currentHealth;
+
     public GameObject GetPlayer()
     {
         return player;
@@ -33,11 +36,35 @@ public class TankAI : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        currentHealth = totalHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
+       
         anim.SetFloat("Distance", Vector3.Distance(transform.position, player.transform.position));
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "shell")
+        {
+            TakeDamage(2.5f);
+        }
+    }
+
+    void TakeDamage ( float amount)
+    {
+        currentHealth -= amount;
+
+        if(currentHealth <= 0)
+        {
+            Debug.Log("Is dead");
+            Destroy(this.gameObject, 0.5f);
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Game_Manager : MonoBehaviour
 {
-    public GameObject[] Tanks;
+   public GameObject[] Tanks;
     public GameObject winner;
     int deadTanks;
 
