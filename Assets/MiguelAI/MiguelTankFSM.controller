@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MiguelAI: {fileID: 0}
-  speed: 2
+  speed: 5
   rotSpeed: 4
   accuracy: 3
 --- !u!114 &114686057484076862
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MiguelAI: {fileID: 0}
-  speed: 2
+  speed: 5
   rotSpeed: 4
   accuracy: 3
 --- !u!114 &114898416427991638
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MiguelAI: {fileID: 0}
-  speed: 2
+  speed: 5
   rotSpeed: 4
   accuracy: 3
 --- !u!114 &114995441176422590
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MiguelAI: {fileID: 0}
-  speed: 2
+  speed: 5
   rotSpeed: 4
   accuracy: 3
 --- !u!1101 &1101103904737687302

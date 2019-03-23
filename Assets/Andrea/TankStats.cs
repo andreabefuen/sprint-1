@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TankStats : MonoBehaviour
 {
-
+    public Color colorTank;
     public float totalHealth;
     public float speed;
     public float rangeOfVision;
@@ -31,7 +31,7 @@ public class TankStats : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
 
-    private float currentHealth;
+    public float currentHealth;
     private bool isDead = false;
     Animator anim;
 
@@ -57,6 +57,16 @@ public class TankStats : MonoBehaviour
 
         // Disable the prefab so it can be activated when it's required.
         explosionParticles.gameObject.SetActive(false);
+
+
+
+        MeshRenderer[] renderers = this.GetComponentsInChildren<MeshRenderer>();
+
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material.color = colorTank;
+        }
+
 
 
     }
@@ -127,6 +137,14 @@ public class TankStats : MonoBehaviour
         Destroy(this.gameObject, 0.5f);
         // Turn the tank off.
         //gameObject.SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "shell")
+        {
+            TakeDamage(2.5f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
