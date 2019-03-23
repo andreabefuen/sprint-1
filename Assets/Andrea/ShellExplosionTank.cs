@@ -49,7 +49,7 @@ public class ShellExplosionTank : MonoBehaviour
             //float damage = CalculateDamage(targetRigidbody.position);
 
             // Deal this damage to the tank.
-            tankStats.TakeDamage(2.5f);
+            //tankStats.TakeDamage(2.5f);
 
             
         }
