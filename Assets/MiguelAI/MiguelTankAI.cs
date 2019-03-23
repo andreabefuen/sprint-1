@@ -41,7 +41,7 @@ public class MiguelTankAI : MonoBehaviour
 
     public GameObject LookForClosestEnemy()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Tank");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("tank");
 
         float minDistance = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
