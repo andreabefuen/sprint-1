@@ -68,7 +68,7 @@ public class ShellExplosionTank : MonoBehaviour
         Destroy(m_ExplosionParticles.gameObject, mainModule.duration);
 
         // Destroy the shell.
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
     }
 
 
