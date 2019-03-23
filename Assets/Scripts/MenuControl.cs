@@ -6,13 +6,25 @@ public class MenuControl : MonoBehaviour
 {
     public GameObject tankPrefab;
     public List<GameObject> allTanks;
+    public Color colorTank1;
+    public Color colorTank2;
+    public Color colorTank3;
+    public Color colorTank4;
 
-    public TanksSetup[] tanks;
+
+
 
     public void CreateNewTank()
     {
-       GameObject newTank =  GameObject.Instantiate(tankPrefab, new Vector3(Random.Range(-40,40), 0, Random.Range(-40, 40)), Quaternion.identity);
-       allTanks.Add(newTank);
+        GameObject newTank = GameObject.Instantiate(tankPrefab, new Vector3(Random.Range(-40, 40), 0, Random.Range(-40, 40)), Quaternion.identity);
+        MeshRenderer[] renderers = newTank.GetComponentsInChildren<MeshRenderer>();
+
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material.color = colorTank1;
+        }
+       
+        allTanks.Add(newTank);
     }
 
 

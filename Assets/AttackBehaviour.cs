@@ -81,6 +81,7 @@ public class AttackBehaviour : StateMachineBehaviour
             //Debug.DrawRay(fireTransform.position, fireTransform.TransformDirection(Vector3.forward) * 1000, Color.yellow);
             //Debug.Log("NOT SHOOTING");
            // tankStats.ContinueMovement();
+           
             animator.SetBool("attack", false);
         }
     }
