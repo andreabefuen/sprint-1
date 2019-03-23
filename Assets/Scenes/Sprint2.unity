@@ -988,6 +988,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sprint 2 Tank
       objectReference: {fileID: 0}
+    - target: {fileID: 7666151352285563297, guid: 9ae19196b589fb347b9e1098542a58cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2633810097012144019, guid: 9ae19196b589fb347b9e1098542a58cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1046,17 +1051,17 @@ PrefabInstance:
     - target: {fileID: 5702691092897497973, guid: 9ae19196b589fb347b9e1098542a58cd,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5700035611915297066, guid: 9ae19196b589fb347b9e1098542a58cd,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5700035611915297066, guid: 9ae19196b589fb347b9e1098542a58cd,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ae19196b589fb347b9e1098542a58cd, type: 3}

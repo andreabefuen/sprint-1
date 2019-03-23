@@ -75,7 +75,7 @@ public class TankStats : MonoBehaviour
     {
         // Reduce current health by the amount of damage done.
         currentHealth -= amount;
-        Debug.Log(currentHealth);
+        //Debug.Log(currentHealth);
 
 
 
