@@ -18,6 +18,8 @@ public class tankAITiago : MonoBehaviour
 
     public GameObject[] tankShellArray;
 
+    public bool evade;
+
     public float speed = 10;
     public float distance;
     public float force = 25;
@@ -38,6 +40,7 @@ public class tankAITiago : MonoBehaviour
         turret = tankAI.transform.Find("TankRenderers/TankTurret").gameObject;
         radarLong = tankAI.transform.Find("RadarLong").gameObject;
         radarClose = tankAI.transform.Find("RadarClose").gameObject;
+        //shellHolder = tankAI.transform.Find("ShellHolder").gameObject;
         shellHolder = new GameObject("shellHolder");
     }
 
@@ -47,9 +50,13 @@ public class tankAITiago : MonoBehaviour
         // gets target tank from radarLong child and checks its distance, using it to regulate the force of the shell needs to hit the target
         targetTank = radarLong.GetComponent<radarLongTiago>().GetTarget();
 
+
+
         // behaviour methods
         SetAnimatorDistance();
         AdjustForceAndLookSpeed();
+
+
 
         // gets incoming projectiles so that the AI may evade them - THIS COULD BE A METHOD, BUT FOR ORGANISATION I LIKE IT HERE
         avoidable = radarClose.GetComponent<radarCloseTiago>().GetProjectile();
@@ -70,19 +77,25 @@ public class tankAITiago : MonoBehaviour
                 if (projDirection != lastDirection)
                 {
                     evadeVector = Vector3.Cross(projDirection, Vector3.up).normalized;
+                    //evadeVector *= speed;
 
                     var evadePoint = evadeVector + gameObject.transform.position;
 
                     evadePoint.y = 0;
-                    var direction = evadePoint - this.transform.position;
-                    gameObject.transform.Translate(evadePoint.normalized * (speed / 2) * Time.deltaTime);
-                    //tankAI.transform.rotation = Quaternion.Slerp(tankAI.transform.rotation, Quaternion.LookRotation(direction), 3 * Time.deltaTime);
+
+                    gameObject.transform.Translate(evadePoint.normalized * (speed/3) * Time.deltaTime);
                 }
             }
         }
-    }
 
-    /////// END OF UPDATE ///////
+
+        // death
+        if (health < 1)
+            GameObject.Destroy(this.gameObject);
+
+
+
+    }/////// END OF UPDATE ///////
      /////// END OF UPDATE ///////
      /////// END OF UPDATE ///////
 
@@ -145,11 +158,7 @@ public class tankAITiago : MonoBehaviour
         }
     }
 
-    void Death()
-    {
-        if (health < 1)
-            GameObject.Destroy(this.gameObject);
-    }
+    
 
     ///////////////////////////
     ///   Getter Methods    ///
@@ -183,6 +192,11 @@ public class tankAITiago : MonoBehaviour
     public GameObject GetTurret() //returns the child object Turret
     {
         return turret;
+    }
+
+    public bool GetEvade()
+    {
+        return evade;
     }
 
     public Vector3 GetShellDirection()
@@ -220,10 +234,7 @@ public class tankAITiago : MonoBehaviour
         InvokeRepeating("Fire", 0.5f, 0.5f);
     }
 
-    public int GetHealth ()
-    {
-        return health;
-    }
+    
 
 } //end of class
 

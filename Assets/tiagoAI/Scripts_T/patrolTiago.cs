@@ -8,7 +8,6 @@ public class patrolTiago : baseFSMTiago
     GameObject[] waypoints;
 
     public int currentWP;
-    float timer;
 
 
     private void Awake()
@@ -31,17 +30,6 @@ public class patrolTiago : baseFSMTiago
         if (Vector3.Distance(waypoints[currentWP].transform.position, tankAI.transform.position) < accuracy)
         {
             currentWP = tankAI.GetComponent<tankAITiago>().RandomWaypoint();
-        }
-
-        // check if tank has been too long near waypoint
-        if (Vector3.Distance(waypoints[currentWP].transform.position, tankAI.transform.position) < 4)
-        {
-            timer += Time.deltaTime;
-            if (timer >= 2)
-            {
-                currentWP = tankAI.GetComponent<tankAITiago>().RandomWaypoint();
-                timer = 0;
-            }
         }
 
         // rotates towards WP

@@ -9,7 +9,6 @@ public class baseFSMTiago : StateMachineBehaviour
     public GameObject tankAI;
     public GameObject targetTank;
     public GameObject turret;
-    public GameObject sphere;
 
     public float rotSpeed = 1;
     public float accuracy = 3;
@@ -34,8 +33,7 @@ public class baseFSMTiago : StateMachineBehaviour
         distance = tankAI.GetComponent<tankAITiago>().GetTargetDistance();
         lookSpeed = tankAI.GetComponent<tankAITiago>().GetLookSpeed();
 
-        if (targetTank == null)
-            Destroy(sphere);
+        evade = tankAI.GetComponent<tankAITiago>().GetEvade();
     }
 
 }
