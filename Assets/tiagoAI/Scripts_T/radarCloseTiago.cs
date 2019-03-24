@@ -30,6 +30,15 @@ public class radarCloseTiago : MonoBehaviour
         }
     }
 
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "shell")
+        {
+            Debug.Log("i detect a shell");
+            avoidable = other.gameObject;
+        }
+    }
+
     public GameObject GetProjectile()
     {
         return avoidable;
