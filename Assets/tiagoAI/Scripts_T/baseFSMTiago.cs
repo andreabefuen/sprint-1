@@ -14,6 +14,8 @@ public class baseFSMTiago : StateMachineBehaviour
     public float rotSpeed = 1;
     public float accuracy = 3;
 
+    public bool hasTarget;
+
     // fetched values from tankAI
     public float speed;
     public float distance;

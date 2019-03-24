@@ -50,6 +50,7 @@ public class tankAITiago : MonoBehaviour
         // behaviour methods
         SetAnimatorDistance();
         AdjustForceAndLookSpeed();
+        Death();
 
         // gets incoming projectiles so that the AI may evade them - THIS COULD BE A METHOD, BUT FOR ORGANISATION I LIKE IT HERE
         avoidable = radarClose.GetComponent<radarCloseTiago>().GetProjectile();

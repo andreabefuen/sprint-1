@@ -19,6 +19,11 @@ public class attackTiago : baseFSMTiago
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        /*if (targetTank == null)
+        {
+            animator.SetBool("hasTarget", false);
+        }*/
+
         // create the target point, so that bullet targeting this point can hit the tank
         if (targetTank.transform.Find("Sphere") == null)
         {
@@ -65,5 +70,6 @@ public class attackTiago : baseFSMTiago
     {
         tankAI.GetComponent<tankAITiago>().StopFiring();
         Destroy(sphere);
+        animator.SetBool("hasTarget", false);
     }
 }

@@ -6,9 +6,10 @@ public class patrolTiago : baseFSMTiago
 {
     // Variables
     GameObject[] waypoints;
+    public GameObject currentWayPoint;
 
     public int currentWP;
-    float timer;
+    public float timer = 3;
 
 
     private void Awake()
@@ -36,11 +37,11 @@ public class patrolTiago : baseFSMTiago
         // check if tank has been too long near waypoint
         if (Vector3.Distance(waypoints[currentWP].transform.position, tankAI.transform.position) < 4)
         {
-            timer += Time.deltaTime;
-            if (timer >= 2)
+            timer -= Time.deltaTime;
+            if (timer < 0)
             {
                 currentWP = tankAI.GetComponent<tankAITiago>().RandomWaypoint();
-                timer = 0;
+                timer = 3;
             }
         }
 
@@ -53,6 +54,7 @@ public class patrolTiago : baseFSMTiago
 
         tankAI.transform.Translate(0f, 0f, speed * Time.deltaTime);
 
+        currentWayPoint = waypoints[currentWP];
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
