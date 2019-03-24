@@ -5,9 +5,9 @@ using UnityEngine;
 public class attackTiago : baseFSMTiago
 {
     // Variables
-    GameObject sphere = null;
     GameObject prefab;
     Vector3 direction;
+    Vector3 targetCurrentPos, targetLastPos;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -25,19 +25,36 @@ public class attackTiago : baseFSMTiago
             sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
             sphere.transform.parent = targetTank.transform;
-            var resetPos = new Vector3 (0, 0, 3);
-            sphere.transform.localPosition = resetPos;
+            sphere.transform.localPosition = new Vector3(0, 0, 3);
             sphere.GetComponent<Collider>().enabled = false;
-            //sphere.GetComponent<MeshRenderer>().enabled = false
+            //sphere.GetComponent<MeshRenderer>().enabled = false;
         }
 
-        if (targetTank == null)
-            Destroy(sphere);
 
-        if (sphere != null)
+
+        if (targetTank.transform.Find("Sphere") != null)
         {
+            sphere = targetTank.transform.Find("Sphere").gameObject;
+
             direction = sphere.transform.position - tankAI.transform.position;
             direction.y = 0f;
+
+            // predicts where to shoot based on tank position. If tank is moving, shoot a little bit in front. If tank stopped, shoot directly at it
+            targetCurrentPos = targetTank.transform.position;
+
+            if (targetCurrentPos == targetLastPos)
+            {
+                sphere.transform.localPosition = new Vector3(0, 0, 0);
+                Debug.Log("sphere in Zero 0");
+            }
+
+            else
+            {
+                sphere.transform.localPosition = new Vector3(0, 0, 3);
+                Debug.Log("sphere in Three 3");
+            }
+                
+            targetLastPos = targetCurrentPos;
         }
 
         turret.transform.rotation = Quaternion.Slerp(turret.transform.rotation, Quaternion.LookRotation(direction), lookSpeed * Time.deltaTime);
@@ -47,6 +64,6 @@ public class attackTiago : baseFSMTiago
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         tankAI.GetComponent<tankAITiago>().StopFiring();
+        Destroy(sphere);
     }
-
 }

@@ -23,8 +23,11 @@ public class radarLongTiago : MonoBehaviour
     {
         if (other.gameObject.tag == "tank")
         {
-            targetTank = other.gameObject;
-            Debug.Log("i hit a tank");
+            if (targetTank == null)
+            {
+                targetTank = other.gameObject;
+                Debug.Log("i hit a tank");
+            }
         }
     }
 
