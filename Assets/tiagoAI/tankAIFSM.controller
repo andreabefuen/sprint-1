@@ -52,11 +52,15 @@ MonoBehaviour:
   sphere: {fileID: 0}
   rotSpeed: 1
   accuracy: 3
+  hasTarget: 0
   speed: 10
   distance: 0
   lookSpeed: 5
   evade: 0
+  currentWayPoint: {fileID: 0}
   currentWP: 0
+  timer: 3
+  debugDistance: 0
 --- !u!114 &114698329019074840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,6 +79,7 @@ MonoBehaviour:
   sphere: {fileID: 0}
   rotSpeed: 1
   accuracy: 3
+  hasTarget: 0
   speed: 10
   distance: 0
   lookSpeed: 5
@@ -97,6 +102,7 @@ MonoBehaviour:
   sphere: {fileID: 0}
   rotSpeed: 1
   accuracy: 3
+  hasTarget: 0
   speed: 10
   distance: 0
   lookSpeed: 5

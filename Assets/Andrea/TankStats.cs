@@ -139,14 +139,14 @@ public class TankStats : MonoBehaviour
         //gameObject.SetActive(false);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "shell")
         {
             TakeDamage(2.5f);
             Debug.Log("AUCH");
         }
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {

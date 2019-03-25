@@ -97,7 +97,7 @@ public class MiguelTankAI : MonoBehaviour
 
 
 
-    void OnCollisionEnter(Collision col)
+    /*void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "shell")
         {
@@ -108,5 +108,5 @@ public class MiguelTankAI : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-    }
+    }*/
 }

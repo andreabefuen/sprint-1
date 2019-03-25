@@ -49,7 +49,7 @@ public class TankAI : MonoBehaviour
         anim.SetFloat("Distance", Vector3.Distance(transform.position, player.transform.position));
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "shell")
         {
@@ -66,5 +66,5 @@ public class TankAI : MonoBehaviour
             Debug.Log("Is dead");
             Destroy(this.gameObject, 0.5f);
         }
-    }
+    }*/
 }

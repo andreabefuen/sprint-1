@@ -308,7 +308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6894991102907376970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -423,7 +423,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -695,7 +695,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5595,6 +5595,7 @@ GameObject:
   - component: {fileID: 1925788202885641687}
   - component: {fileID: 7482401185587605002}
   - component: {fileID: 1255642208}
+  - component: {fileID: 1733518562}
   m_Layer: 10
   m_Name: Sprint 2 Tank
   m_TagString: tank
@@ -5616,6 +5617,7 @@ Transform:
   - {fileID: 7774724557827961812}
   - {fileID: 4567327024633416307}
   - {fileID: 8849751796040793245}
+  - {fileID: 1068349265466379433}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5856,7 +5858,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 15
+  m_StoppingDistance: 6.55
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -5916,6 +5918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1062aaf2b52efbb4e8773986a808b78c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorTank: {r: 0, g: 0, b: 0, a: 0}
   totalHealth: 100
   speed: 10
   rangeOfVision: 20
@@ -5933,6 +5936,7 @@ MonoBehaviour:
   timeBetweenFire: 1
   distanceShoot: 25
   tankToSee: {fileID: 0}
+  currentHealth: 0
 --- !u!135 &1255642208
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5946,6 +5950,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 7
   m_Center: {x: 0, y: 0, z: 6.65}
+--- !u!114 &1733518562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666151352285563297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1989706a11d3b5249ae3732545db8a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
 --- !u!1 &8701143349523342425
 GameObject:
   m_ObjectHideFlags: 0
@@ -10635,3 +10652,138 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1001 &717032897
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2633810097012144019}
+    m_Modifications:
+    - target: {fileID: 1068349265103896937, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_Name
+      value: Tank Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349266300773191, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_Name
+      value: Andrea Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349266300773189, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_Text
+      value: Consta Tank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1b37a850edc98e54ea3acb39a6a848b9, type: 3}
+--- !u!224 &1068349265466379433 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1068349265103896936, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 717032897}
+  m_PrefabAsset: {fileID: 0}
