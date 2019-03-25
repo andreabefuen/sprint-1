@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Game_Manager : MonoBehaviour
 {
@@ -8,33 +10,28 @@ public class Game_Manager : MonoBehaviour
     public GameObject winner;
     public int deadTanks;
 
+    public Text winnerText;
+
+    public GameObject childCanvas;
+
     int aux;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
         Tanks = GameObject.FindGameObjectsWithTag("tank");
-        aux = Tanks.Length - 2;
 
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        deadTanks = 0;
-        for (int i = 0; i < Tanks.Length; i++)
+        if (Tanks.Length <= 1)
         {
-            
-            if (Tanks[i] == null)
-            {
-                deadTanks++;
-            }
-            if (deadTanks == aux)
-            {
-                if (Tanks[i] != null)
-                {
-                    winner = Tanks[i];
-                }
-            }
+            winner = Tanks[0];
+
+            winnerText.text = Tanks[0].transform.name;
+            childCanvas.SetActive(true);
         }
+    }
+
+    public void PlayAgainButton()
+    {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
