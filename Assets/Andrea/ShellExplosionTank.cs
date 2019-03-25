@@ -50,6 +50,7 @@ public class ShellExplosionTank : MonoBehaviour
 
             // Deal this damage to the tank.
             //tankStats.TakeDamage(2.5f);
+            Debug.Log("aucn");
 
             
         }
@@ -68,7 +69,7 @@ public class ShellExplosionTank : MonoBehaviour
         Destroy(m_ExplosionParticles.gameObject, mainModule.duration);
 
         // Destroy the shell.
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 2f);
     }
 
 

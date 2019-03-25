@@ -15,7 +15,7 @@ public class MiguelTankAI : MonoBehaviour
     public GameObject enemyToAttack;
     public GameObject[] enemies;
 
-    int life = 10;
+    public int life = 10;
 
     //public GameObject GetPlayer()
     //{
@@ -101,7 +101,7 @@ public class MiguelTankAI : MonoBehaviour
     {
         if (col.gameObject.tag == "shell")
         {
-            life = life - 1;
+            life -= 1;
 
             if (life <= 0)
             {

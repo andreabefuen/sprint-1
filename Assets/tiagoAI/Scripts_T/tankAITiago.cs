@@ -57,29 +57,33 @@ public class tankAITiago : MonoBehaviour
 
         if (avoidable != null)
         {
-            if (avoidable.transform.parent.gameObject != shellHolder)
+            if(avoidable.transform.parent.gameObject != null)
             {
-                currentPos = avoidable.transform.position;
-                if (currentPos != lastPos) //get projectile direction
+                if (avoidable.transform.parent.gameObject != shellHolder)
                 {
-                    projDirection = currentPos - lastPos;
-                    var lastDirection = projDirection;
-                }
+                    currentPos = avoidable.transform.position;
+                    if (currentPos != lastPos) //get projectile direction
+                    {
+                        projDirection = currentPos - lastPos;
+                        var lastDirection = projDirection;
+                    }
 
-                lastPos = currentPos;
+                    lastPos = currentPos;
 
-                if (projDirection != lastDirection)
-                {
-                    evadeVector = Vector3.Cross(projDirection, Vector3.up).normalized;
+                    if (projDirection != lastDirection)
+                    {
+                        evadeVector = Vector3.Cross(projDirection, Vector3.up).normalized;
 
-                    var evadePoint = evadeVector + gameObject.transform.position;
+                        var evadePoint = evadeVector + gameObject.transform.position;
 
-                    evadePoint.y = 0;
-                    var direction = evadePoint - this.transform.position;
-                    gameObject.transform.Translate(evadePoint.normalized * (speed / 2) * Time.deltaTime);
-                    //tankAI.transform.rotation = Quaternion.Slerp(tankAI.transform.rotation, Quaternion.LookRotation(direction), 3 * Time.deltaTime);
+                        evadePoint.y = 0;
+                        var direction = evadePoint - this.transform.position;
+                        gameObject.transform.Translate(evadePoint.normalized * (speed / 2) * Time.deltaTime);
+                        //tankAI.transform.rotation = Quaternion.Slerp(tankAI.transform.rotation, Quaternion.LookRotation(direction), 3 * Time.deltaTime);
+                    }
                 }
             }
+            
         }
     }
 

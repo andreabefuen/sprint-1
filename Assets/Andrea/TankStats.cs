@@ -144,6 +144,7 @@ public class TankStats : MonoBehaviour
         if(collision.gameObject.tag == "shell")
         {
             TakeDamage(2.5f);
+            Debug.Log("AUCH");
         }
     }
 
