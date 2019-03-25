@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_FogColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0.5254902}
+  m_FogMode: 1
+  m_FogDensity: 0.1
+  m_LinearFogStart: -100
+  m_LinearFogEnd: 100
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -27,9 +27,9 @@ RenderSettings:
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: 0.5
-  m_FlareStrength: 1
-  m_FlareFadeSpeed: 3
+  m_HaloStrength: 0.506
+  m_FlareStrength: 0.181
+  m_FlareFadeSpeed: 1.65
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
@@ -1099,6 +1099,7 @@ GameObject:
   - component: {fileID: 950319771}
   - component: {fileID: 950319770}
   - component: {fileID: 950319769}
+  - component: {fileID: 950319772}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1170,6 +1171,19 @@ Transform:
   m_Father: {fileID: 153577798}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 40, y: 60, z: 0}
+--- !u!114 &950319772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950319768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 138b6a83ebf9fd4459ffc19059657b30, type: 2}
 --- !u!1 &1072594643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,12 +1674,32 @@ PrefabInstance:
     - target: {fileID: 5753954646680355850, guid: 8b0537f4239aedf40bc02c2b11245a5c,
         type: 3}
       propertyPath: m_Intensity
-      value: 1.29
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 5753954646680355850, guid: 8b0537f4239aedf40bc02c2b11245a5c,
         type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753954646680355850, guid: 8b0537f4239aedf40bc02c2b11245a5c,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753954646680355850, guid: 8b0537f4239aedf40bc02c2b11245a5c,
+        type: 3}
+      propertyPath: m_ShadowAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753954646680355850, guid: 8b0537f4239aedf40bc02c2b11245a5c,
+        type: 3}
+      propertyPath: m_DrawHalo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753954646680355850, guid: 8b0537f4239aedf40bc02c2b11245a5c,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0537f4239aedf40bc02c2b11245a5c, type: 3}
