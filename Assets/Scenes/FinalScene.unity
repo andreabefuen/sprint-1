@@ -179,7 +179,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1733518562, guid: 9ae19196b589fb347b9e1098542a58cd, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
+    m_RemovedComponents:
+    - {fileID: 6815966768341576396, guid: 9ae19196b589fb347b9e1098542a58cd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9ae19196b589fb347b9e1098542a58cd, type: 3}
 --- !u!1 &45780428
 GameObject:
@@ -353,7 +358,12 @@ PrefabInstance:
     - target: {fileID: 1068349265466379433, guid: 9ae19196b589fb347b9e1098542a58cd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068349266995785348, guid: 9ae19196b589fb347b9e1098542a58cd,
+        type: 3}
+      propertyPath: m_Text
+      value: Consta Tank
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7482401185587605002, guid: 9ae19196b589fb347b9e1098542a58cd, type: 3}
@@ -668,6 +678,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6234548551463518570, guid: 079a48343bbe34045bfdbd64445472bd,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.228
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234548551463518570, guid: 079a48343bbe34045bfdbd64445472bd,
+        type: 3}
+      propertyPath: Priority
+      value: 107
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 079a48343bbe34045bfdbd64445472bd, type: 3}
 --- !u!1001 &604877472
@@ -830,6 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 15
+  explosion: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
 --- !u!4 &721679635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2633810097012144019, guid: 9ae19196b589fb347b9e1098542a58cd,
@@ -1061,6 +1082,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 871162729, guid: bfc8111af402aa3468de0aaf3a1428eb, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfc8111af402aa3468de0aaf3a1428eb, type: 3}
 --- !u!1 &950319768
@@ -1716,6 +1741,10 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1340802138, guid: ba13bf65a5fae9e4197e339293ce88de, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba13bf65a5fae9e4197e339293ce88de, type: 3}
 --- !u!1 &1863855034

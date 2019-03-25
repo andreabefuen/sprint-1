@@ -65,7 +65,7 @@ public class AttackBehaviour : StateMachineBehaviour
         {
             Debug.DrawRay(tankStats.fireTransform.position, tankStats.fireTransform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("SHOOOT");
-            Rigidbody shellInstance = Instantiate(tankStats.shell, tankStats.fireTransform.position, Quaternion.identity) as Rigidbody;
+            Rigidbody shellInstance = Instantiate(tankStats.shell, tankStats.fireTransform.position, tankStats.fireTransform.rotation) as Rigidbody;
             tankStats.tankTurret.LookAt(hit.transform);
             tankStats.tankToSee = hit.transform.gameObject;
             shellInstance.velocity = tankStats.launchForce * tankStats.fireTransform.forward;

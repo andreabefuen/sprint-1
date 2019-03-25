@@ -72,6 +72,16 @@ public class ShellExplosionTank : MonoBehaviour
         Destroy(gameObject, 2f);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "tank")
+        {
+            ParticleSystem.MainModule mainModule = m_ExplosionParticles.main;
+            Destroy(m_ExplosionParticles.gameObject, mainModule.duration);
+            Destroy(this.gameObject);
+        }
+    }
+
 
     private float CalculateDamage(Vector3 targetPosition)
     {
