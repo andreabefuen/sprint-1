@@ -10,6 +10,7 @@ public class patrolTiago : baseFSMTiago
 
     public int currentWP;
     public float timer = 3;
+    public float debugDistance;
 
 
     private void Awake()
@@ -34,8 +35,10 @@ public class patrolTiago : baseFSMTiago
             currentWP = tankAI.GetComponent<tankAITiago>().RandomWaypoint();
         }
 
+        debugDistance = Vector3.Distance(waypoints[currentWP].transform.position, tankAI.transform.position);
+
         // check if tank has been too long near waypoint
-        if (Vector3.Distance(waypoints[currentWP].transform.position, tankAI.transform.position) < 4)
+        if (Vector3.Distance(waypoints[currentWP].transform.position, tankAI.transform.position) < 10)
         {
             timer -= Time.deltaTime;
             if (timer < 0)
