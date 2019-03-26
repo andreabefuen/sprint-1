@@ -50,12 +50,15 @@ public class patrolTiago : baseFSMTiago
 
         // rotates towards WP
         var direction = waypoints[currentWP].transform.position - tankAI.transform.position;
-
+        
+        /*  UNUSED WHILE USING NAVMESH --
+         *  
         tankAI.transform.rotation = Quaternion.Slerp(tankAI.transform.rotation, Quaternion.LookRotation(direction), rotSpeed * Time.deltaTime);
+        tankAI.transform.Translate(0f, 0f, speed * Time.deltaTime);
+        */
 
         turret.transform.rotation = Quaternion.Slerp(turret.transform.rotation, Quaternion.LookRotation(direction), rotSpeed * Time.deltaTime);
-
-        tankAI.transform.Translate(0f, 0f, speed * Time.deltaTime);
+        tankAgent.SetDestination(waypoints[currentWP].transform.position);
 
         currentWayPoint = waypoints[currentWP];
     }

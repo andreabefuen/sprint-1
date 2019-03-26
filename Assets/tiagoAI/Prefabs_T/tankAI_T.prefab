@@ -9604,6 +9604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  explosion: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
 --- !u!114 &7933406761274064933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9761,6 +9762,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1068349266300773191, guid: 1b37a850edc98e54ea3acb39a6a848b9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1068349265523460428, guid: 1b37a850edc98e54ea3acb39a6a848b9,
         type: 3}
       propertyPath: m_Layer
@@ -9772,11 +9778,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1068349266382668835, guid: 1b37a850edc98e54ea3acb39a6a848b9,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1068349266300773191, guid: 1b37a850edc98e54ea3acb39a6a848b9,
         type: 3}
       propertyPath: m_Layer
       value: 10

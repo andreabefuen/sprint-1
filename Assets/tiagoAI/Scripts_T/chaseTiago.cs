@@ -24,10 +24,16 @@ public class chaseTiago : baseFSMTiago
         // direction of target
         var direction = targetPos - currentPos;
 
-        tankAI.transform.rotation = Quaternion.Slerp(tankAI.transform.rotation, Quaternion.LookRotation(direction), rotSpeed * Time.deltaTime);
-        turret.transform.rotation = Quaternion.Slerp(turret.transform.rotation, Quaternion.LookRotation(direction), rotSpeed * Time.deltaTime);
+        /*  UNUSED WHILE USING NAVMESH
+         *
+            tankAI.transform.rotation = Quaternion.Slerp(tankAI.transform.rotation, Quaternion.LookRotation(direction), rotSpeed * Time.deltaTime);
+            tankAI.transform.Translate(0, 0, speed * Time.deltaTime);
+        */
 
-        tankAI.transform.Translate(0, 0, speed * Time.deltaTime);
+        turret.transform.rotation = Quaternion.Slerp(turret.transform.rotation, Quaternion.LookRotation(direction), rotSpeed * Time.deltaTime);
+        tankAgent.SetDestination(targetTank.transform.position);
+
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

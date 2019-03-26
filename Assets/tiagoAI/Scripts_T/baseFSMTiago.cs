@@ -21,13 +21,15 @@ public class baseFSMTiago : StateMachineBehaviour
     public float distance;
     public float lookSpeed;
 
-    public bool evade;
-    
+    public UnityEngine.AI.NavMeshAgent tankAgent;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         tankAI = animator.gameObject;
         targetTank = tankAI.GetComponent<tankAITiago>().GetTarget();
         turret = tankAI.GetComponent<tankAITiago>().GetTurret();
+
+        tankAgent = tankAI.GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex, AnimatorControllerPlayable controller)
