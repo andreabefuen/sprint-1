@@ -5,23 +5,22 @@ using UnityEngine;
 public class TankAI : MonoBehaviour
 {
     Animator anim;
-    public GameObject player;
+    public GameObject tank;
     public GameObject bullet;
     public GameObject turret;
-
+    public GameObject checkSomething;
+    public Rigidbody shell;
+   
     public float totalHealth;
     public float currentHealth;
-
-    public GameObject GetPlayer()
-    {
-        return player;
-    }
+    public float powerLaunch;
 
     void Fire()
     {
-        GameObject b = Instantiate(bullet, turret.transform.position, turret.transform.rotation);
-        b.GetComponent<Rigidbody>().AddForce(turret.transform.forward * 500);
+        GameObject bFire = Instantiate(bullet, turret.transform.position, turret.transform.rotation);
+        bFire.GetComponent<Rigidbody>().AddForce(turret.transform.forward * 500);
     }
+
 
     public void StopFiring()
     {
@@ -40,16 +39,7 @@ public class TankAI : MonoBehaviour
         currentHealth = totalHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-       
-        anim.SetFloat("Distance", Vector3.Distance(transform.position, player.transform.position));
-    }
-
-    /*private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "shell")
         {
@@ -66,5 +56,15 @@ public class TankAI : MonoBehaviour
             Debug.Log("Is dead");
             Destroy(this.gameObject, 0.5f);
         }
-    }*/
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "tank")
+        {
+            Debug.Log("found u");
+            checkSomething = other.gameObject;
+            anim.SetTrigger("goToChase");
+        }
+    }
 }

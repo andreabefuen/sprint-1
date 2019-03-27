@@ -1,11 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Patrol : NPCBaseFSM
+public class Patrol : StateMachineBehaviour
 {
     GameObject[] waypoints;
-    int currentWP;
+    GameObject tankConsta;
+
+    NavMeshAgent agent; 
+    TankAI tankAI;
+
+    int shootableMask;
+    int waypoint = 0;
+
+    public float range = 10000f;
+
+    Animator anim;
+
+
 
     void Awake()
     {
@@ -15,26 +28,45 @@ public class Patrol : NPCBaseFSM
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        currentWP = 0;
+        tankConsta = animator.gameObject;
+        tankAI = tankConsta.GetComponent<TankAI>();
+        shootableMask = LayerMask.GetMask("Shootable");
+        agent = tankConsta.GetComponent<NavMeshAgent>();
+        agent.destination = waypoints[waypoint].transform.position;
+        anim = animator;
+        agent.autoBraking = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (waypoints.Length == 0) return;
-        if (Vector3.Distance(waypoints[currentWP].transform.position, NPC.transform.position) < accuracy)
+       agent.destination = waypoints[waypoint].transform.position;
+       
+        if (agent.remainingDistance >= agent.stoppingDistance)
         {
-            currentWP++;
-            if (currentWP >= waypoints.Length)
-            {
-                currentWP = 0;
-            }
+            waypoint = (waypoint + 1) % waypoints.Length;
         }
+        
+        checkSomething();
+            
+    }
 
-        //rotate towards target
-        var direction = waypoints[currentWP].transform.position - NPC.transform.position;
-        NPC.transform.rotation = Quaternion.Slerp(NPC.transform.rotation, Quaternion.LookRotation(direction), rotSpeed * Time.deltaTime);
-        NPC.transform.Translate(0, 0, Time.deltaTime * speed);
+
+
+    private void checkSomething()
+    {
+        RaycastHit hit;
+
+        
+        if (Physics.Raycast(tankAI.turret.transform.position, tankAI.turret.transform.forward, out hit, Mathf.Infinity,shootableMask))
+        {
+            Debug.DrawRay(tankAI.turret.transform.position, tankAI.turret.transform.forward * hit.distance, Color.blue);
+            tankAI.checkSomething = hit.transform.gameObject;
+            anim.SetTrigger("goToChase");
+            anim.ResetTrigger("goToPatrol");
+            Debug.Log("Gamoto");
+
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
