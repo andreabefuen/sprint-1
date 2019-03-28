@@ -16,7 +16,7 @@ public class ChaseEnemy : MiguelAIBaseFSM
     {
         //rotate towards character
         GameObject enemyToAttack = MiguelAI.GetComponent<MiguelTankAI>().LookForClosestEnemy();
-        int safeDistance = 10;
+        int safeDistance = 5;
 
         if (Vector3.Distance(enemyToAttack.transform.position, MiguelAI.transform.position) > safeDistance)
         {
