@@ -16,15 +16,11 @@ public class tankAITiago : MonoBehaviour
     public GameObject avoidable;
     public GameObject shellHolder;
 
-    public GameObject[] tankShellArray;
-
     public float speed = 10;
     public float distance;
     public float force = 25;
     public float lookSpeed = 8;
     public int health = 10;
-
-    public int arrayLength;
 
     public Vector3 currentPos, lastPos, projDirection, lastDirection, evadeVector; //vars related to projectile evasion
 
@@ -189,16 +185,6 @@ public class tankAITiago : MonoBehaviour
     public Vector3 GetShellDirection()
     {
         return projDirection;
-    }
-
-    public int GetShellArrayLength()
-    {
-        return tankShellArray.Length;
-    }
-
-    public GameObject GetShellArrayObject(int i) //returns this tanks fired shell at array position i
-    {
-        return tankShellArray[i];
     }
     
 
